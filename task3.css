@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(194, 233, 251);
+  font-family: sans-serif;
+  padding: 15px;
+  display: block;
+}
+
+.layout-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto 1fr auto;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  grid-template-areas:
+    "head head head head"
+    "side art art art"
+    "foot foot foot foot";
+  min-height: calc(100vh - 30px);
+}
+
+.header {
+  grid-area: head;
+  background-color: #00b5ad;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  border-radius: 4px;
+}
+
+.aside {
+  grid-area: side;
+  background-color: #5bbd5b;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  border-radius: 4px;
+}
+
+.article {
+  grid-area: art;
+  background-color: #f2a649;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 20px 20px 20px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.article-title {
+  text-align: center;
+  font-size: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.images-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  grid-column-gap: 15px;
+}
+
+.image-box {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  background-color: #f1c43f;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 10px;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+
+.footer {
+  grid-area: foot;
+  background-color: #00b5ad;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  border-radius: 4px;
+  position: static;
+}
+
+.image-box:first-child {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.image-box:last-child {
+  font-weight: bold;
+}
+
+.image-box:nth-child(2) {
+  opacity: 0.95;
+}
+
+.layout-container::after {
+  content: "";
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "side"
+      "art"
+      "foot";
+  }
+  
+  .images-container {
+    flex-direction: column;
+    grid-row-gap: 15px;
+  }
+  
+  .image-box {
+    width: 100%;
+  }
+}
